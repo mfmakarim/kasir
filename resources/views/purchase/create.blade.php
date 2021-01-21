@@ -75,7 +75,7 @@
             var price = $("<input>", {
                 id: "price_"+i,
                 class: "form-control",
-                name: "price_"+1,
+                name: "price_"+i,
                 onChange: "changePrice(this)"
             });
 

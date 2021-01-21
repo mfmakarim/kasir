@@ -40,6 +40,7 @@ class PurchaseController extends Controller
             }
         }
 
+
         $transaction = Transaction::create([
             'total_harga' => $total
         ]);
