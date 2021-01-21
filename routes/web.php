@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('purchase')->group(function(){
+    Route::get('create', [PurchaseController::class, 'create'])->name('purchase.create');
+    Route::post('create', [PurchaseController::class, 'store']);
+    Route::get('/', [PurchaseController::class, 'index'])->name('purchase');
+    Route::get('{purchase:id}/show', [PurchaseController::class, 'show'])->name('purchase.show');
+});
+Route::get('products/{id}/get', [ProductController::class, 'get']);
