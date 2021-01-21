@@ -1,4 +1,9 @@
 TODO:
-php artisan migrate
-php artisan db:seed
-php artisan serve
+php artisan migrate <br>
+php artisan db:seed <br>
+php artisan serve <br>
+<br>
+Menu:<br>
+/purchase : list transaksi pembelian<br>
+/purchase/create: buat transaksi pembelian<br>
+/purchase/id/show: detail transaksi<br>
