@@ -11,14 +11,17 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">Pilih Barang</div>
-                    <div class="col-md-3">Kuantitas</div>
+                    <div class="col-md-2">Kuantitas</div>
                     <div class="col-md-3">Harga Satuan</div>
-                    <div class="col-md-3"></div>
+                    <div class="col-md-3">Sub Total</div>
+                    <div class="col-md-2"></div>
                 </div>
                 <div id="product-wrapper" class="full hide"></div>
             </div>
             <br>
-            <div class="col-md-12 text-right">
+            <div>Total: <span id="count-total"></span></div>
+            <br>
+            <div class="col-md-12 text-center">
                 <button type="button" id="add-product" class="btn btn-primary">Tambah Barang</button>
                 <button class="btn btn-success">Submit</button>
             </div>
@@ -41,13 +44,16 @@
                 class: "col-md-3"
             });
             var col4Qty = $("<div>", {
-                class: "col-md-3"
+                class: "col-md-2"
             });
             var col4Price = $("<div>", {
                 class: "col-md-3"
             });
             var col4SubTotal = $("<div>", {
                 class: "col-md-3"
+            });
+            var col4Action = $("<div>", {
+                class: "col-md-2"
             });
             var selectProduct = $("<select>", {
                 type: "select",
@@ -58,8 +64,10 @@
             });
             var inputQty = $("<input>", {
                 type: "number",
+                min: 0,
                 name: "qty_"+i,
-                class: "form-control"
+                class: "form-control",
+                onChange: "subTotal(this)"
             });
             
             var price = $("<input>", {
@@ -97,6 +105,7 @@
             item.append(col4Product);
             item.append(col4Qty);
             item.append(col4Price);
+            item.append(col4SubTotal);
             button.html("Hapus");
             item.append(button);
             $("#product-wrapper").append(item);
@@ -129,6 +138,22 @@
         });
         
     }
+</script>
+<script>
+    $(".card-body").click(function(){
+        var child = $("#product-wrapper").children();
+        var count = child.length;
+        var arrPrice = [];
+        for(var i = 1; i <= count; i++){
+            var price = $("#price_"+i);
+            arrPrice.push(price.val());
+        }
+        var countTotal = 0;
+        for(var n = 0; n < arrPrice.length; n++){
+            countTotal = countTotal+parseFloat(arrPrice[n]);
+        }
+        $("#count-total").html(countTotal);
+    });
 </script>
 
 @endsection
