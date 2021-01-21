@@ -50,7 +50,8 @@
                 class: "col-md-3"
             });
             var col4SubTotal = $("<div>", {
-                class: "col-md-3"
+                class: "col-md-3",
+                id: "sub-total_"+i
             });
             var col4Action = $("<div>", {
                 class: "col-md-2"
@@ -66,6 +67,7 @@
                 type: "number",
                 min: 0,
                 name: "qty_"+i,
+                id: "qty_"+i,
                 class: "form-control",
                 onChange: "subTotal(this)"
             });
@@ -140,13 +142,24 @@
     }
 </script>
 <script>
+    function subTotal(elem){
+        var val = $("#"+elem.id).val();
+        var str = elem.id;
+        var split = str.split("_");
+        var id = split[1];
+        var subTotal = val * $("#price_"+id).val();
+        $("#sub-total_"+id).html(subTotal);
+        console.log(subTotal);
+    }
+</script>
+<script>
     $(".card-body").click(function(){
         var child = $("#product-wrapper").children();
         var count = child.length;
         var arrPrice = [];
         for(var i = 1; i <= count; i++){
-            var price = $("#price_"+i);
-            arrPrice.push(price.val());
+            var price = $("#sub-total_"+i).val();
+            arrPrice.push(price);
         }
         var countTotal = 0;
         for(var n = 0; n < arrPrice.length; n++){
