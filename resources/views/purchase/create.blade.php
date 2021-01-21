@@ -158,7 +158,8 @@
         var count = child.length;
         var arrPrice = [];
         for(var i = 1; i <= count; i++){
-            var price = $("#sub-total_"+i).val();
+            var price = $("#sub-total_"+i).html();
+            console.log(price);
             arrPrice.push(price);
         }
         var countTotal = 0;
