@@ -52,12 +52,12 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('purchase')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-list"></i>
                     <span>Transaksi</span></a>
             </li>       
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('purchase.create')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-plus"></i>
                     <span>Tambah Transaksi</span></a>
             </li>         
 
